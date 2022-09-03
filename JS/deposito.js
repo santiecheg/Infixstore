@@ -7,7 +7,8 @@ class Producto{
         this.foto=foto;
         this.id=id;
     }
-   /* show(){
+   /* AGREGAR METODOS 
+   show(){
         console.log(...Producto)
        
     }
@@ -39,7 +40,7 @@ deposito.push(new Producto("Almacenamiento","Pendrive", 800,250, "./imagenes/pen
 
 
 /////FUNCTIONAS DEPOSITO
-//// SPREAD
+
 function catalogo(){
     const catalog=deposito.map((Producto)=>{
         return {
@@ -51,30 +52,28 @@ function catalogo(){
         console.log(...catalog);
 }
 //////
-
-
-
 ///Mostrar un ITEM Desestructurando el Array
 function ultimoItem(){
 let ultimoItem=deposito.length;
 console.log(deposito[ultimoItem-1])};
 
-////FUNCIONES DEPOSITO
+////FUNCIONES DEPOSITO FIN
     
-  //////MODO DE ILUMINACIÓN
+  //////MODO DE ILUMINACIÓN///////
 
-/// + operador condicional
-  let stage=localStorage?.getItem("stage")||(document.body.className="theSun");
-  let boton=document.getElementById("stage");
+let boton=document.getElementById("stage");
+boton.innerHTML=`<i class="fa-solid fa-moon"></i>`;
+let stage=localStorage?.getItem("stage");
+
   ///
 
   boton.onclick=()=>{
       if (stage=="theSun"){
-          boton.innerText="El sol"
+          boton.innerHTML="El sol"
           stage="stars";
       document.body.className="stars";
       } else{
-          boton.innerText="Estrellas"
+          boton.innerHTML="Estrellas"
           stage="theSun";
           document.body.className="theSun";   
       }
@@ -85,7 +84,7 @@ console.log(deposito[ultimoItem-1])};
 
   
 ////
-////ADMIN BOTON
+////ADMIN BOTON//////////
 
 let adminPassword="";
 let miBotonAdmin=document.getElementById ("botonAdmin")
@@ -93,12 +92,13 @@ miBotonAdmin.addEventListener ("click", ingresoAdmin)
 
 function ingresoAdmin () {
    adminPassword=prompt("Ïngrese clave de admin (la clave es 1234)");
-   (adminPassword==1234)? modoAdmin(): alert("Not admin")
-}
+   (adminPassword==1234)? modoAdmin(): alert("Not admin") ;
 
-function modoAdmin() {
+
+   function modoAdmin() {
     let adminSpace=document.getElementById("adminman")
     adminSpace.innerHTML=`
+    <button id="botonStorage"class="btn btn-danger">Borrar storage</button>
     <button id="botonCatalogo"class="btn btn-danger">Catálogo</button>
     <button id="botonUltimo"class="btn btn-danger">Ultimo item</button>
     <button id="botonAdmin"class="btn btn-danger">Ingresar como admin</button>
@@ -119,4 +119,14 @@ function modoAdmin() {
             title:"Ding Dong"
           });
     }
+
+    let botonStorg=document.getElementById("botonStorage")
+    botonStorg.onclick=()=> {
+        localStorage.clear();
+        console.log("Storage Vaciado!")
+    }
 };
+
+
+}
+

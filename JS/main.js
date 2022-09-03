@@ -71,6 +71,13 @@ function removerProductoCarrito(elementoAEliminar) {
     elementosAMantener.forEach((elemento) => carrito.push(elemento));
 }
 
+
+
+///////////////////////////
+//////card INICIO
+///////////////////////
+
+
 function crearCard(producto) {
     //Botón
     let botonAgregar = document.createElement("button");
@@ -125,6 +132,11 @@ function crearCard(producto) {
     return contenedorCarta;
 
 }
+///////////////////////////
+//////card FIN
+///////////////////////
+
+//Catalogo ↓↓
 
 function dibujarCatalogoProductos() {
     contenedorProductos.innerHTML = "";
